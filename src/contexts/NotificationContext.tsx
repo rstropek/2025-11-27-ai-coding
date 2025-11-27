@@ -13,6 +13,7 @@ export interface Notification {
 interface NotificationContextType {
   notifications: Notification[];
   unreadCount: number;
+  removeNotification: (id: string) => void;
 }
 
 const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
@@ -20,6 +21,10 @@ const NotificationContext = createContext<NotificationContextType | undefined>(u
 export function NotificationProvider({ children }: { children: ReactNode }) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const unreadCount = notifications.length;
+
+  const removeNotification = (id: string) => {
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
+  };
 
   useEffect(() => {
     // Connect to SSE endpoint
@@ -56,7 +61,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <NotificationContext.Provider value={{ notifications, unreadCount }}>
+    <NotificationContext.Provider value={{ notifications, unreadCount, removeNotification }}>
       {children}
     </NotificationContext.Provider>
   );
