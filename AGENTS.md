@@ -76,9 +76,10 @@ src/
 **State Management**:
 
 - `NotificationContext`: React Context providing notification state (unread count) accessible throughout the app
-  - Default unread count: 3 (for demo purposes)
+  - Notifications start empty; populated by SSE stream
   - Accessible via `useNotifications()` hook
   - Wrapped around app in `layout.tsx`
+  - Provides `removeNotification(id: string)` function for client-side dismissal
 
 **Container Pattern**:
 
@@ -156,15 +157,17 @@ curl -X POST http://localhost:3000/api/notifications \
 - Automatically connects to `/api/notifications/stream` on mount
 - Stores notifications in-memory with unique IDs and timestamps
 - `unreadCount` is computed from the notifications array length
-- Provides `notifications` array and `unreadCount` to components via context
+- Provides `notifications` array, `unreadCount`, and `removeNotification(id)` to components via context
 
 **NotificationPopup**:
 
 - Displays list of notifications with icons from lucide-react
 - Shows icon, title (bold), and text for each notification
-- Empty state: "You have no notifications yet"
+- Empty state: "No notifications."
 - Icons are dynamically resolved from icon name (e.g., "check-circle" → CheckCircle)
 - Scrollable list with max-height of 400px
+- Each notification has a dismiss button (trash icon) aligned to the right
+- Fade-out animation (300ms) when a notification is dismissed
 
 **NotificationBell**:
 
@@ -176,4 +179,4 @@ curl -X POST http://localhost:3000/api/notifications \
 - **No Persistence**: Notifications are ephemeral and stored only in-memory on both client and server
 - **No Authentication**: API endpoints are open (can be added later if needed)
 - **Automatic Reconnection**: EventSource automatically reconnects on connection loss
-- **No Dismissal**: Notifications cannot be cleared in this implementation (planned for future)
+- **Client-Side Dismissal**: Notifications can be dismissed individually via trash icon; dismissal is purely in-memory (no backend call); each notification has a unique `id` for internal handling
