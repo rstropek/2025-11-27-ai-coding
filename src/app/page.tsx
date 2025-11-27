@@ -92,6 +92,23 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.salesSection}>
+          <h2>Aktuelle Angebote</h2>
+          <p className={styles.salesIntro}>
+            Entdecken Sie unsere aktuellen Sonderangebote und sichern Sie sich Top-Bikes zu reduzierten Preisen!
+          </p>
+          <div className={styles.cardGrid}>
+            {salesBikesCombined.map(bike => (
+              <Card
+                key={bike.id}
+                title={bike.title}
+                category={bike.category}
+                description={bike.description}
+              />
+            ))}
+          </div>
+        </section>
+
       </main>
     </div>
   );

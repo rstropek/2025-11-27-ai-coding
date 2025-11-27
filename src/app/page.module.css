@@ -101,6 +101,33 @@
   gap: 2rem;
 }
 
+.salesSection {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+  padding: 3rem 2rem;
+  margin-top: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.salesSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.salesIntro {
+  font-size: 1.125rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 768px) {
   .main {
     padding: 1rem;
