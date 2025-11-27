@@ -5,6 +5,9 @@ import { useNotifications } from '@/contexts/NotificationContext';
 import * as Icons from 'lucide-react';
 import styles from './NotificationPopup.module.css';
 
+// Animation duration in milliseconds (must match CSS --dismiss-animation-duration)
+const DISMISS_ANIMATION_MS = 300;
+
 interface NotificationPopupProps {
   onClose: () => void;
 }
@@ -40,7 +43,7 @@ export default function NotificationPopup({ onClose }: NotificationPopupProps) {
         newSet.delete(id);
         return newSet;
       });
-    }, 300); // Match the CSS animation duration
+    }, DISMISS_ANIMATION_MS);
   };
 
   return (
