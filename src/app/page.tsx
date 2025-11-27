@@ -104,6 +104,7 @@ export default function Home() {
                 title={bike.title}
                 category={bike.category}
                 description={bike.description}
+                compact={true}
               />
             ))}
           </div>

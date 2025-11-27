@@ -100,3 +100,36 @@
   color: #E55A28;
   text-decoration: underline;
 }
+
+/* Compact card variant */
+.card.compact .content {
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.card.compact .category {
+  font-size: 0.75rem;
+  padding-bottom: 0.25rem;
+}
+
+.card.compact .title {
+  font-size: 1.125rem;
+}
+
+.card.compact .description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card.compact .imageContainer {
+  height: 120px;
+}
+
+.card.compact .primaryButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
