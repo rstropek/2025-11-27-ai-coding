@@ -18,7 +18,7 @@ It should display the number of unread notifications dynamically and show a popu
 
 ### Notification Count
 
-- A small badge (blue dot; same accent color as the menu items' text color) with a number is shown at the top-right corner of the icon if there are one or more unread notifications.
+- A small badge (red dot; same accent color as the menu items' text color) with a number is shown at the top-right corner of the icon if there are one or more unread notifications.
 - The badge dynamically updates when the number of notifications changes.
 - The notification count is stored in React state, accessible throughout the app lifecycle (via Context API).
 

@@ -34,12 +34,18 @@ npm run lint
 src/
 ├── app/                   # Next.js App Router pages
 │   ├── api/               # API routes
-│   ├── layout.tsx         # Root layout
+│   ├── layout.tsx         # Root layout with NotificationProvider
 │   ├── page.tsx           # Homepage
 │   ├── globals.css        # Global styles
 │   └── page.module.css    # Page-specific styles
-└── components/            # Reusable React components
-    └── ...
+├── components/            # Reusable React components
+│   ├── Header.tsx         # Main navigation with notification bell
+│   ├── Breadcrumb.tsx     # Breadcrumb navigation
+│   ├── Card.tsx           # Product card component
+│   ├── NotificationBell.tsx    # Notification bell icon with badge
+│   └── NotificationPopup.tsx   # Notification dropdown popup
+└── contexts/              # React Context providers
+    └── NotificationContext.tsx # Notification state management
 ```
 
 ### Styling Architecture
@@ -52,6 +58,7 @@ src/
   - Primary Green: `#2D9B4F` (header background)
   - Primary Orange: `#FF6B35` (text, buttons, links)
   - Background Gray: `#f5f5f5`
+  - Notification Badge Blue: `#007bff`
 
 ### Component Architecture
 
@@ -63,6 +70,15 @@ src/
 **Content Components**:
 
 - `Card`: Reusable product card with category label, title, description, primary CTA button, and secondary action links
+- `NotificationBell`: Bell icon with unread count badge, displays notification popup on click
+- `NotificationPopup`: Dropdown popup showing notification list (currently with placeholder content)
+
+**State Management**:
+
+- `NotificationContext`: React Context providing notification state (unread count) accessible throughout the app
+  - Default unread count: 3 (for demo purposes)
+  - Accessible via `useNotifications()` hook
+  - Wrapped around app in `layout.tsx`
 
 **Container Pattern**:
 

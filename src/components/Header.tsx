@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NotificationBell from './NotificationBell';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -14,6 +15,9 @@ export default function Header() {
             <Link href="/bikes">Fahrräder & Zubehör</Link>
             <Link href="/service">Service & Werkstatt</Link>
           </nav>
+        </div>
+        <div className={styles.rightSection}>
+          <NotificationBell />
         </div>
       </div>
     </header>
